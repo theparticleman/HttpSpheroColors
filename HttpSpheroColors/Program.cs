@@ -9,8 +9,11 @@ namespace HttpSpheroColors
 {
     class Program
     {
+        public static SpheroColorChanger ColorChanger { get; private set; }
+
         static void Main(string[] args)
         {
+            ColorChanger = new SpheroColorChanger();
             var config = new HostConfiguration
             {
                 UrlReservations = new UrlReservations { CreateAutomatically = true },
@@ -19,9 +22,11 @@ namespace HttpSpheroColors
             var uri = new Uri("http://localhost:80");
             using (var nancy = new NancyHost(config, uri))
             {
+                ColorChanger.Start();
                 nancy.Start();
                 Console.WriteLine($"Listening at {uri}. Press enter to quit");
                 Console.ReadLine();
+                ColorChanger.Stop();
             }
         }
     }

@@ -20,8 +20,9 @@ namespace HttpSpheroColors
 
             Post["/"] = parameters =>
             {
-                var request = this.Bind<ColorRequest>();
-                Console.WriteLine($"Got a request with ({request.Red},{request.Green},{request.Blue})");
+                var color = this.Bind<Color>();
+                Console.WriteLine($"Got a request with ({color.Red},{color.Green},{color.Blue})");
+                Program.ColorChanger.AddColor(color);
                 return indexHtml;
             };
         }
