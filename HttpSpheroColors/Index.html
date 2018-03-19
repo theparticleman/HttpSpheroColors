@@ -4,17 +4,68 @@
 <head>
     <meta charset="utf-8" />
     <title>HTTP Sphero Colors</title>
+    <style>
+        .main {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+        }
+        .row {
+            margin: 5vmin
+        }
+        .color-preview {
+            background-color: black;
+            border-style: solid;
+            border-width: 1px;
+            min-height: 20vmin;
+            max-width: 20vmin;
+            margin: auto;
+        }
+        label {
+            font-size: 10vmin;
+            margin: 5vmin;
+        }
+        input {
+            font-size: 10vmin;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
-    <form method="post">
-        <label for="red">Red</label>
-        <input type="number" min="0" max="255" name="red" value="0"/>
-        <label for="green">Green</label>
-        <input type="number" min="0" max="255" name="green" value="0" />
-        <label for="blue">Blue</label>
-        <input type="number" min="0" max="255" name="blue" value="0" />
-        <input type="submit" value="Submit" />
-    </form>
+    
+    <div class="main">
+        <h1>Pick a color for the Sphero</h1>
+        <form method="post">
+            <div class="row">
+                <label for="red">Red</label>
+                <input type="number" min="0" max="255" name="red" id="red" value="0" />
+            </div>
+            <div class="row">
+                <label for="green">Green</label>
+                <input type="number" min="0" max="255" name="green" id="green" value="0" />
+            </div>
+            <div class="row">
+                <label for="blue">Blue</label>
+                <input type="number" min="0" max="255" name="blue" id="blue" value="0" />
+            </div>
+            <div id="color" class="row color-preview"></div>
+            <div class="row">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+    <script>
+        var colorDiv = document.getElementById("color");
+        var recompute = function (e) {
+            colorDiv.style.backgroundColor = 'rgb(' + red.value + ',' +  green.value + ',' + blue.value + ')';
+        }
+
+        var red = document.getElementById("red");
+        red.addEventListener("change", recompute);
+        var green = document.getElementById("green");
+        green.addEventListener("change", recompute);
+        var blue = document.getElementById("blue");
+        blue.addEventListener("change", recompute);
+
+    </script>
 </body>
 </html>
