@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Color.cs" />
     <Compile Include="Index.cs" />
+    <None Include="Load-Test.ps1" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpheroColorChanger.cs" />
